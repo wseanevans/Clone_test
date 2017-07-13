@@ -7,7 +7,7 @@ class CartController < ApplicationController
   	product = Product.find(params[:product_id])
   	puts "**********"
   	if (product.quantity - params[:quantity].to_i) < 0
-  		flash[:notice] = "Only #{product.quantity} #{product.name} in stock!  Please choose another value!"
+  		flash[:notice] = "***** Only #{product.quantity} #{product.name}s in stock!  Please choose another value! *****"
   		redirect_back(fallback_location: root_path) 
   	
   	else
@@ -31,7 +31,7 @@ class CartController < ApplicationController
 	  	end	
 	 
   	redirect_back(fallback_location: root_path) 
-  end	
+  	end	
   end
 
 
