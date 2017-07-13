@@ -3,19 +3,12 @@ class CartController < ApplicationController
 	before_action :authenticate_user!, except:[:add_to_cart, :view_order]
 
   def add_to_cart
-  	# add check for product quantity
-  	product = Product.find(params[:product_id])
-  	puts "**********"
-  	if (product.quantity - params[:quantity].to_i) < 0
-  		flash[:notice] = "***** Only #{product.quantity} #{product.name}s in stock!  Please choose another value! *****"
-  		redirect_back(fallback_location: root_path) 
-  	
-  	else
+ 
   	#brings over one record of our line item table
 			line_item = LineItem.where(product_id: params[:product_id].to_i).first
 
 		#An object is blank if it’s false, empty, or a whitespace string. For example, false, ”, ‘ ’, nil, 
-		#[], and {} are all blank.	So, if not records are returned, we will create a new record.
+		#[], and {} are all blank.	So, if no records are returned, we will create a new record.
 		#Otherwise, we only update
 			if line_item.blank? 
 
@@ -31,7 +24,7 @@ class CartController < ApplicationController
 	  	end	
 	 
   	redirect_back(fallback_location: root_path) 
-  	end	
+
   end
 
 
