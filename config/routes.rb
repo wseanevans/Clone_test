@@ -3,9 +3,16 @@ Rails.application.routes.draw do
 
   
 
-  get 'categorical' => 'storefront#item_by_category'
+  post 'add_to_cart' =>'cart#add_to_cart'
 
-  get 'branding' => 'storefront#item_by_brand'
+  get 'view_order' => 'cart#view_order'
+
+  get 'checkout' => 'cart#checkout'
+
+  devise_for :users
+  get 'categorical' => 'storefront#items_by_category'
+
+  get 'branding' => 'storefront#items_by_brand'
 
 	root 'storefront#all_items'
 	
