@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
 
   
+  post 'order_complete' => 'cart#order_complete'
 
   get 'all_users' => 'admin#all_users'
 
