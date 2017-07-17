@@ -127,5 +127,29 @@ end
      
   end	
 
+  def edit_line_item
+    @order = Order.find(params[:order_id].to_i)
+    line_item = @order.line_items.where(product_id: params[:product_id].to_i).first
+    line_item.update(quantity: params[:quantity].to_i)
+    line_item.update(line_item_total: line_item.quantity * line_item.product.price)
+
+    redirect_back(fallback_location: view_order) 
+
+
+
+
+  end 
+
+
+
+  def delete_line_item
+    @order = Order.find(params[:order_id].to_i)
+    line_item = @order.line_items.where(product_id: params[:product_id].to_i).first
+
+    line_item.destroy
+    redirect_back(fallback_location: view_order) 
+
+  end  
+
 
 end
