@@ -31,3 +31,13 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    attributes:
+      line_item:
+        quantity: "Quantity"
+    errors:
+      models:
+        line_item:
+          attributes:
+            quantity:
+              blank: " must have a quantity."

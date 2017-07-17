@@ -37,11 +37,11 @@
 
 
 			      </div>
-			      <div class="modal-footer">
+			      <div class="modal-footer form-group">
 			        <p>
 							  <%= form_tag add_to_cart_path do %>
 							    <%= hidden_field_tag :product_id, product.id %>
-							    <%= number_field_tag :quantity, nil, min: 0, max: product.quantity, placeholder: "How many?" %>
+							    <%= number_field_tag :quantity, nil, min: 0, max: product.quantity, class: "form-control" %>
 							    <%= submit_tag "Add to Cart", class: "btn btn-primary" %>
 							  <% end %>
 						  </p>
